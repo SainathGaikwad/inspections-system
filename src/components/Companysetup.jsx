@@ -9,7 +9,7 @@ import {
 
 const Companysetup = () => {
   return (
-    <div class="h-screen flex items-center justify-center">
+    <div class="h-screen flex  items-center justify-center">
       <Card color="transparent" shadow={false} className="justify align-middle">
         <Typography variant="h4" color="blue-gray">
           Sign Up

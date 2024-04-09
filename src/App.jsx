@@ -3,14 +3,14 @@ import "./App.css";
 import Dashboard from "./components/Dashboard";
 import Sidebar from "./components/Sidebar";
 import Companysetup from "./components/Companysetup";
-import { Route, Routes } from "react-router-dom";
+import {BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import UserManagement from "./components/UserManagement";
 import Outletsetup from "./components/Outletsetup";
 
 function App() {
   const [sidebarToggle, setSidebarToggle] = useState(false);
   return (
-    <div className="flex justify-right">
+    <Router className="flex justify-right">
       <Routes>
         <Route path="Companysetup" element={<Companysetup />} />
         <Route path="UserManagement" element={<UserManagement />} />
@@ -23,7 +23,7 @@ function App() {
           setSidebarToggle={setSidebarToggle}
         />
       </div>
-    </div>
+    </Router>
   );
 }
 
