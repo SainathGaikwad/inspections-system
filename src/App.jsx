@@ -11,8 +11,6 @@ function App() {
   const [sidebarToggle, setSidebarToggle] = useState(false);
   return (
     <Router className="flex justify-right">
-
-
       <Sidebar sidebarToggle={sidebarToggle} />
       <Dashboard
         sidebarToggle={sidebarToggle}
