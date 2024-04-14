@@ -5,44 +5,32 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const User_Management_AddDetails = () => {
-  const fname = useRef();
-  const lname = useRef();
-  const email = useRef();
-  const ContactNo = useRef();
 
-  // const users = {
-  //   fname: fname.current.value,
-  //   lname: "",
-  //   email: "",
-  //   ContactNo: "",
-  // };
-  // console.log(fname.current.focus());
-
-  // const [user, setUser] = useState(users);
   const navigate = useNavigate();
+  const [fname, setFname] = useState('')
+  const [lname, setLname] = useState('')
+  const [email, setEmail] = useState('')
+  const [contact, setContact] = useState('')
 
-  // const inputHandler = (e) => {
-  //   const { name, value } = e.target;
-  //   setUser({ ...user, [name]: value });
-  // };
+
 
   const submitForm = async (e) => {
     e.preventDefault();
     const users = {
-      fname: fname.current.value,
-      lname: "",
-      email: "",
-      ContactNo: "",
+      fname: fname,
+      lname: lname,
+      email: email,
+      ContactNo: contact,
     };
     console.log("button Click");
-    console.log(fname.current.value);
-    //   await axios
-    //     .post("http://localhost:8000/api/create", users)
-    //     .then((response) => {
-    //       toast.success(response.data.msg, { position: "top-right" });
-    //       navigate("/");
-    //     })
-    //     .catch((error) => console.log(error));
+    // console.log(users);
+      await axios
+        .post("http://localhost:8000/api/create", users)
+        .then((response) => {
+          toast.success(response.data.msg, { position: "top-right" });
+          navigate("/");
+        })
+        .catch((error) => console.log(error));
   };
   return (
     <div className="mt-6 flex  items-center justify-left ml-20">
@@ -67,8 +55,8 @@ const User_Management_AddDetails = () => {
               First Name
             </Typography>
             <Input
-              // onChange={inputHandler}
-              ref={fname}
+              onChange={(e)=>setFname(e.target.value)}
+              
               name="fname"
               type="text"
               size="lg"
@@ -82,8 +70,8 @@ const User_Management_AddDetails = () => {
               Last Name
             </Typography>
             <Input
-              // onChange={inputHandler}
-              ref={lname}
+               onChange={(e)=>setLname(e.target.value)}
+
               name="lname"
               type="text"
               size="lg"
@@ -97,7 +85,8 @@ const User_Management_AddDetails = () => {
               Email
             </Typography>
             <Input
-              ref={email}
+               onChange={(e)=>setEmail(e.target.value)}
+
               name="email"
               type="email"
               size="lg"
@@ -111,7 +100,8 @@ const User_Management_AddDetails = () => {
               User Contact Number
             </Typography>
             <Input
-              ref={ContactNo}
+              onChange={(e)=>setContact(e.target.value)}
+
               name="ContactNo"
               size="lg"
               placeholder="+91-9763439264"
